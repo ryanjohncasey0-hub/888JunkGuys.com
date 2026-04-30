@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>888JunkGuys | Chicagoland Junk Removal</title>
+  <meta name="description" content="888JunkGuys provides fast, reliable junk removal across the Chicagoland area." />
+  <style>
+    :root{
+      --blue:#0f6ecf;
+      --blue-dark:#0a4f96;
+      --green:#18b36b;
+      --green-dark:#0f8e54;
+      --text:#0f172a;
+      --muted:#475569;
+      --bg:#ffffff;
+      --card:#f8fbff;
+      --border:#dbeafe;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.5;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px, calc(100% - 32px)); margin:0 auto}
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid #e5eefc;
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:20px; padding:18px 0;
+    }
+    .brand{
+      display:flex; flex-direction:column;
+    }
+    .brand h1{
+      margin:0; font-size:1.55rem; line-height:1; color:var(--blue); font-weight:900;
+    }
+    .brand span{
+      margin-top:6px; font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--green); font-weight:700;
+    }
+    .nav-links{display:flex; align-items:center; gap:24px; font-weight:600; color:#334155}
+    .nav-links a:hover{color:var(--blue)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      border-radius:16px; padding:14px 22px; font-weight:800; transition:.2s ease;
+    }
+    .btn-primary{
+      color:#fff; background:linear-gradient(135deg,var(--blue),var(--green));
+      box-shadow:0 10px 24px rgba(15,110,207,.16);
+    }
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-secondary{
+      border:1px solid #bfe6d0; background:#effcf5; color:var(--green-dark);
+    }
+
+    .hero{
+      position:relative; overflow:hidden;
+      background:
+        radial-gradient(circle at top left, rgba(15,110,207,.10), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(24,179,107,.12), transparent 28%);
+    }
+    .hero-grid{
+      display:grid; grid-template-columns:1.1fr .9fr; gap:42px; align-items:center; padding:84px 0 72px;
+    }
+    .eyebrow{
+      display:inline-block; padding:9px 14px; border-radius:999px;
+      font-size:.74rem; font-weight:800; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--blue); background:#eff6ff; border:1px solid #bfdbfe;
+    }
+    .hero h2{
+      margin:18px 0 0; font-size:clamp(2.7rem, 6vw, 5.25rem); line-height:.98; letter-spacing:-.04em;
+    }
+    .hero p{
+      max-width:640px; margin:22px 0 0; font-size:1.13rem; color:var(--muted);
+    }
+    .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:28px}
+    .card{
+      border:1px solid var(--border); border-radius:28px; background:var(--card); padding:28px;
+      box-shadow:0 8px 24px rgba(15,23,42,.04);
+    }
+    .card-dark{
+      color:#fff; background:linear-gradient(135deg,var(--blue-dark),var(--green)); border:none;
+    }
+    .mini-grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; margin-top:16px}
+    .mini{
+      background:#fff; border-radius:18px; padding:14px 16px; border:1px solid #eef2ff; font-weight:700;
+    }
+
+    .section{padding:74px 0}
+    .section-muted{background:linear-gradient(to bottom,#f9fcff,#f1f8ff); border-top:1px solid #e5eefc; border-bottom:1px solid #e5eefc}
+    .section-title{
+      margin:0 0 12px; font-size:.78rem; font-weight:800; letter-spacing:.22em; text-transform:uppercase; color:#64748b;
+    }
+    .section h3{margin:0; font-size:2.2rem; line-height:1.05; letter-spacing:-.03em}
+    .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:28px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:28px}
+    .service, .highlight, .step, .contact-box{
+      border-radius:28px; padding:24px; background:#fff;
+      border:1px solid var(--border);
+      box-shadow:0 8px 20px rgba(15,23,42,.04);
+    }
+    .service h4, .step h4{margin:0; font-size:1.22rem}
+    .service p, .step p, .contact-box p{margin:12px 0 0; color:var(--muted)}
+    .highlight{font-size:1.08rem; font-weight:800; line-height:1.55}
+    .steps-wrap{
+      background:linear-gradient(135deg,var(--blue-dark),var(--green));
+      color:#fff;
+    }
+    .steps-wrap .section-title{color:rgba(255,255,255,.7)}
+    .steps-wrap .step{
+      background:rgba(255,255,255,.08); color:#fff; border-color:rgba(255,255,255,.16);
+      box-shadow:none;
+    }
+    .steps-wrap .step p{color:rgba(255,255,255,.82)}
+    .step-num{
+      font-size:.75rem; font-weight:900; letter-spacing:.22em; text-transform:uppercase; opacity:.68;
+    }
+
+    .contact-panel{
+      display:grid; grid-template-columns:1.1fr .9fr; gap:26px; align-items:start;
+      padding:34px; border-radius:32px; background:linear-gradient(to bottom,#f7fbff,#eef8ff);
+      border:1px solid var(--border);
+    }
+    .contact-box strong{color:var(--text)}
+    footer{
+      padding:24px 0 40px; color:#64748b; font-size:.95rem;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,.contact-panel,.grid-4,.grid-3{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 760px){
+      .nav{align-items:flex-start}
+      .nav-links{display:none}
+      .hero-grid,.contact-panel,.grid-4,.grid-3{grid-template-columns:1fr}
+      .section{padding:58px 0}
+      .hero-grid{padding:64px 0 52px}
+      .hero h2{font-size:2.7rem}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <h1>888JunkGuys</h1>
+        <span>Fast • Affordable • Reliable</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="mailto:Contact@888JunkGuys.com">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Chicagoland Junk Removal You Can Count On</span>
+          <h2>We remove the junk so you can get your space back.</h2>
+          <p>
+            From single-item pickups to full property cleanouts, 888JunkGuys makes junk removal simple,
+            fast, and stress-free across the Chicagoland area.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Get Free Quote</a>
+            <a class="btn btn-secondary" href="mailto:Contact@888JunkGuys.com">Email Us</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="section-title" style="margin-bottom:0;color:var(--blue)">What We Take</div>
+            <div class="mini-grid">
+              <div class="mini">Furniture</div>
+              <div class="mini">Appliances</div>
+              <div class="mini">Mattresses</div>
+              <div class="mini">Yard Waste</div>
+              <div class="mini">Construction Debris</div>
+              <div class="mini">General Clutter</div>
+            </div>
+          </div>
+          <div class="card card-dark" style="margin-top:16px">
+            <div class="section-title" style="margin-bottom:0;color:rgba(255,255,255,.72)">Need it gone fast?</div>
+            <h3 style="margin-top:10px;font-size:1.9rem">Same-day service available in many areas.</h3>
+            <p style="color:rgba(255,255,255,.84);margin-top:10px">
+              Send photos and we’ll get you a fast quote and the soonest available pickup window.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-us" class="section section-muted">
+      <div class="container">
+        <div class="section-title">Why 888JunkGuys</div>
+        <h3>Simple service. Strong communication. Clean results.</h3>
+        <div class="grid-4">
+          <div class="highlight">Same-day or next-day availability</div>
+          <div class="highlight">Upfront pricing with no surprises</div>
+          <div class="highlight">Residential and commercial service</div>
+          <div class="highlight">Fast, professional crews</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-title">Services</div>
+        <h3>Removal services for homes, businesses, and job sites.</h3>
+        <div class="grid-4">
+          <div class="service">
+            <h4>Junk Removal</h4>
+            <p>Fast pickup for furniture, mattresses, boxes, appliances, and general household junk.</p>
+          </div>
+          <div class="service">
+            <h4>Property Cleanouts</h4>
+            <p>Full garage, basement, attic, storage unit, rental, and estate cleanout services.</p>
+          </div>
+          <div class="service">
+            <h4>Demo &amp; Hauling</h4>
+            <p>Light demolition and debris hauling for sheds, playsets, fencing, and renovation waste.</p>
+          </div>
+          <div class="service">
+            <h4>Commercial Removal</h4>
+            <p>Office, retail, and job-site junk removal with dependable scheduling and clean execution.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section steps-wrap">
+      <div class="container">
+        <div class="section-title">How It Works</div>
+        <h3>Three easy steps.</h3>
+        <div class="grid-3">
+          <div class="step">
+            <div class="step-num">Step 1</div>
+            <h4>Get a Quote</h4>
+            <p>Call, text, or email us for a fast estimate.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">Step 2</div>
+            <h4>We Show Up</h4>
+            <p>Our crew arrives on time, confirms the job, and gets right to work.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">Step 3</div>
+            <h4>Junk Gone</h4>
+            <p>We haul everything away so your space is clean, clear, and ready to use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <div class="section-title">Get Started</div>
+            <h3>Ready to clear the junk out?</h3>
+            <p style="font-size:1.08rem;color:var(--muted);max-width:640px;margin-top:14px">
+              Reach out for a fast quote and let us know what needs to go. We’ll help you get it handled
+              quickly anywhere in the Chicagoland area.
+            </p>
+          </div>
+          <div class="contact-box">
+            <p><strong>Email:</strong> Contact@888JunkGuys.com</p>
+            <p><strong>Hours:</strong> 7 days a week</p>
+            <p><strong>Service Area:</strong> Chicagoland Area</p>
+            <div class="hero-actions" style="margin-top:22px">
+              <a class="btn btn-primary" href="mailto:Contact@888JunkGuys.com">Get a Quote</a>
+              <a class="btn btn-secondary" href="mailto:Contact@888JunkGuys.com">Email Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 888JunkGuys. All rights reserved.</div>
+  </footer>
+</body>
+</html>
